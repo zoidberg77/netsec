@@ -1,0 +1,10 @@
+numpy
+pandas
+scikit-learn
+scipy
+seaborn
+scikit-learn
+statsmodels
+sympy
+flask
+flask_restful
