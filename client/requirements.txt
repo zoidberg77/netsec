@@ -8,3 +8,4 @@ statsmodels
 sympy
 flask
 flask_restful
+jupyterlab

@@ -129,3 +129,5 @@ dmypy.json
 .pyre/
 .idea
 .DS_Store
+malicious-connection-dataset/df_bad.csv
+malicious-connection-dataset/df_good.csv
