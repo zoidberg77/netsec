@@ -3,6 +3,8 @@ pandas
 scikit-learn
 scipy
 seaborn
-sklearn
+scikit-learn
 statsmodels
 sympy
+flask
+flask_restful
