@@ -186,6 +186,7 @@ class SimplePipeline:
 class RESTClassifier(Resource):
     def get(self):
         json_data = request.get_json()
+        print(json_data)
         df = pd.DataFrame(json_data, index=[0])
         loaded_model = pickle.load(open("model.sav", 'rb'))
         result = loaded_model.predict_df(df)
