@@ -1,4 +1,6 @@
-from flask import Flask, request
+import base64
+
+from flask import Flask, request, jsonify
 from flask_restful import Resource, Api
 import pandas as pd
 import pickle
@@ -185,12 +187,18 @@ class SimplePipeline:
 
 class RESTClassifier(Resource):
     def get(self):
-        json_data = request.get_json()
-        print(json_data)
-        df = pd.DataFrame(json_data, index=[0])
+        df = pickle.loads(base64.b64decode(request.get_data()))
         loaded_model = pickle.load(open("model.sav", 'rb'))
-        result = loaded_model.predict_df(df)
-        return {'prediction': result}
+        result_array = loaded_model.predict_df(df)
+        result = {}
+        for i, r in enumerate(result_array):
+            if r == 0:
+                result['result_{}'.format(i)] = 'bad'
+            else:
+                result['result_{}'.format(i)] = 'good'
+
+        print(result)
+        return result, 200
 
 api.add_resource(RESTClassifier, '/predict')
 
